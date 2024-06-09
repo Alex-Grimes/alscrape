@@ -31,10 +31,18 @@ func main() {
 	})
 
 	// Find the anime scores
-	doc.Find(".score").Each(func(i int, s *goquery.Selection) {
+	doc.Find(".rank").Each(func(i int, s *goquery.Selection) {
 		// Extract the text of the score
 		score := s.Text()
 		// Print the score
 		fmt.Println("Score:", score)
+	})
+
+	// Find  the anime images
+	doc.Find(".cover").Each(func(i int, s *goquery.Selection) {
+		// Extract the image source
+		imageSrc := s.Find("img").AttrOr("src", "")
+		// Print the image source
+		fmt.Println("Image Source:", imageSrc)
 	})
 }
